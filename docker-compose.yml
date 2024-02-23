@@ -1,0 +1,33 @@
+version: "3.6"
+
+services:
+  # app-mysql:
+  #   image: mysql
+  #   container_name: app-mysql
+  #   ports:
+  #     - 3308:3306
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: 1234
+  #     MYSQL_DATABASE: hectormanda
+
+  # phpmyadmin:
+  #   image: phpmyadmin
+  #   ports:
+  #     - 8080:80
+  #   environment:
+  #     PMA_HOST: app-mysql
+  #     PMA_ARBITRARY: 1
+  #   links:
+  #     - app-mysql
+  
+  api-express:
+    build: .
+    container_name: api-express
+    ports:
+      - 4000:4000
+    volumes:
+      - ./:/app
+      - nodeModules:/node_modules
+
+volumes:
+  nodeModules:
